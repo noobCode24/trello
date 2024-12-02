@@ -5,7 +5,7 @@ import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
 // Theme dong nhat moi layout theo mot dang nhat quan
 const theme = extendTheme({
   trelloCustom: {
-    appBarHeight: '48px',
+    appBarHeight: '58px',
     boardBarHeight: '56px'
   },
   colorSchemes: {
