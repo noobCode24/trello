@@ -32,6 +32,7 @@ function Workspaces() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         endIcon={<ExpandMoreIcon />}
+        sx={{ fontWeight: '700', height: '32px' }}
       >
         The Workspaces
       </Button>

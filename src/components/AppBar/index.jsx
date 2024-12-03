@@ -25,7 +25,8 @@ function AppBar() {
       alignItems: 'center', //can giua theo chieu doc
       justifyContent: 'space-between'
     }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      {/* left */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, height: '32px' }}>
         <AppsIcon sx={{ color: 'primary.main' }}/>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <SvgIcon component={trelloIcon} fontSize='small' inheritViewBox sx={{ color: 'primary.main' }}/>
@@ -38,23 +39,24 @@ function AppBar() {
         <Starred />
         <Sample />
 
-        <Button variant="contained">Create new</Button>
+        <Button variant="contained" sx={{ height: '32px' }}>Create new</Button>
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <TextField id="outlined-search" label="Search..." type="search" size='small' />
+      {/* Right */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, height: '32px' }}>
+        <TextField id="outlined-search" label="Search..." type="search" size='small'/>
         <ModeSelect />
 
         {/* Notifications */}
         <Tooltip title="Notifications">
           <Badge color="secondary" variant="dot" sx={{ cursor: 'pointer' }}>
-            <SvgIcon component={bellIcon} inheritViewBox />
+            <SvgIcon component={bellIcon} inheritViewBox sx={{ color: 'primary.main' }} />
           </Badge>
         </Tooltip>
 
         {/* Help */}
         <Tooltip title="Help" sx={{ cursor: 'pointer' }}>
-          <HelpOutlineIcon />
+          <HelpOutlineIcon sx={{ color: 'primary.main' }}/>
         </Tooltip>
 
         <Profiles />
