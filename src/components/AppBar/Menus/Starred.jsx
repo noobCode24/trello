@@ -12,6 +12,7 @@ import ContentCut from '@mui/icons-material/ContentCut'
 import ContentCopy from '@mui/icons-material/ContentCopy'
 import ContentPaste from '@mui/icons-material/ContentPaste'
 import Cloud from '@mui/icons-material/Cloud'
+import { Tooltip } from '@mui/material'
 
 function Starred() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -25,17 +26,19 @@ function Starred() {
 
   return (
     <Box>
-      <Button
-        id="basic-button-starred"
-        aria-controls={open ? 'basic-menu-starred' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        endIcon={<ExpandMoreIcon />}
-        sx={{ fontWeight: '700', height: '32px' }}
-      >
-        Starred
-      </Button>
+      <Tooltip title="Starred">
+        <Button
+          id="basic-button-starred"
+          aria-controls={open ? 'basic-menu-starred' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+          endIcon={<ExpandMoreIcon />}
+          sx={{ fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, height: '32px' }}
+        >
+          Starred
+        </Button>
+      </Tooltip>
       <Menu
         id="basic-menu-starred"
         anchorEl={anchorEl}

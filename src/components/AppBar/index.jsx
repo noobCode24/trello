@@ -18,33 +18,38 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import Profiles from './Menus/Profiles'
 function AppBar() {
   return (
-    <Box px={2} sx ={{
+    <Box sx ={{
       width: '100%',
       height: (theme) => theme.trelloCustom.appBarHeight,
       display: 'flex',
+      paddingX: 2,
       alignItems: 'center', //can giua theo chieu doc
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      gap: 2,
+      overflowX: 'auto'
     }}>
       {/* left */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, height: '32px' }}>
-        <AppsIcon sx={{ color: 'primary.main' }}/>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+        <AppsIcon sx={{ color: 'primary.main', cursor: 'pointer' }}/>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer' }}>
           <SvgIcon component={trelloIcon} fontSize='small' inheritViewBox sx={{ color: 'primary.main' }}/>
-          <Typography variant='span' sx={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'primary.main' }}>Trello</Typography>
+          <Typography component='span' sx={{ fontSize: '1.2rem', fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, color: 'primary.main' }}>Trello</Typography>
         </Box>
 
         {/* Menus */}
-        <Workspaces />
-        <Recent />
-        <Starred />
-        <Sample />
-
-        <Button variant="contained" sx={{ height: '32px' }}>Create new</Button>
+        <Box sx={{ display: { xs: 'none', md: 'flex ' }, gap: 1 }}>
+          {/* xs: 0px, md: 900px -> tuong tu nhu reponsive duoi 900 se bi mat di tren 900 se duoc hien thi*/}
+          <Workspaces />
+          <Recent />
+          <Starred />
+          <Sample />
+          <Button variant="contained" sx={{ height: '32px' }}>Create new</Button>
+        </Box>
       </Box>
 
       {/* Right */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, height: '32px' }}>
-        <TextField id="outlined-search" label="Search..." type="search" size='small'/>
+        <TextField id="outlined-search" label="Search..." type="search" size='small' sx={{ minWidth: '120px' }}/>
         <ModeSelect />
 
         {/* Notifications */}
@@ -55,8 +60,8 @@ function AppBar() {
         </Tooltip>
 
         {/* Help */}
-        <Tooltip title="Help" sx={{ cursor: 'pointer' }}>
-          <HelpOutlineIcon sx={{ color: 'primary.main' }}/>
+        <Tooltip title="Help">
+          <HelpOutlineIcon sx={{ color: 'primary.main', cursor: 'pointer' }}/>
         </Tooltip>
 
         <Profiles />
