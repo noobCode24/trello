@@ -12,6 +12,7 @@ import ContentCut from '@mui/icons-material/ContentCut'
 import ContentCopy from '@mui/icons-material/ContentCopy'
 import ContentPaste from '@mui/icons-material/ContentPaste'
 import Cloud from '@mui/icons-material/Cloud'
+import Tooltip from '@mui/material/Tooltip'
 
 function Sample() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -25,17 +26,19 @@ function Sample() {
 
   return (
     <Box>
-      <Button
-        id="basic-button-sample"
-        aria-controls={open ? 'basic-menu-sample' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        endIcon={<ExpandMoreIcon />}
-        sx={{ fontWeight: '700', height: '32px' }}
-      >
-        Sample
-      </Button>
+      <Tooltip title="Sample">
+        <Button
+          id="basic-button-sample"
+          aria-controls={open ? 'basic-menu-sample' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+          endIcon={<ExpandMoreIcon />}
+          sx={{ fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, height: '32px' }}
+        >
+          Sample
+        </Button>
+      </Tooltip>
       <Menu
         id="basic-menu-sample"
         anchorEl={anchorEl}

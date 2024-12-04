@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Check from '@mui/icons-material/Check'
+import Tooltip from '@mui/material/Tooltip'
 
 function Recent() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -21,17 +22,19 @@ function Recent() {
 
   return (
     <Box>
-      <Button
-        id="basic-button-recent"
-        aria-controls={open ? 'basic-menu-recent' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        endIcon={<ExpandMoreIcon />}
-        sx={{ fontWeight: '700', height: '32px' }}
-      >
-        Recently
-      </Button>
+      <Tooltip title="Recently">
+        <Button
+          id="basic-button-recent"
+          aria-controls={open ? 'basic-menu-recent' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+          endIcon={<ExpandMoreIcon />}
+          sx={{ fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, height: '32px' }}
+        >
+          Recently
+        </Button>
+      </Tooltip>
       <Menu
         id="basic-menu-recent"
         anchorEl={anchorEl}

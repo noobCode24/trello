@@ -5,7 +5,8 @@ import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
 const theme = extendTheme({
   trelloCustom: {
     appBarHeight: '48px',
-    boardBarHeight: '56px'
+    boardBarHeight: '56px',
+    buttonFontWeight: '600'
   },
   colorSchemes: {
     light: {
@@ -24,6 +25,23 @@ const theme = extendTheme({
     }
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          '*::-webkit-scrollbar': {
+            width: '8px',
+            height: '8px'
+          },
+          '*::-webkit-scrollbar-thumb': {
+            backgroundColor: '#636e72',
+            borderRadius: '8px'
+          },
+          '*::-webkit-scrollbar-thumb:hover': {
+            background: '#636e72'
+          }
+        }
+      }
+    },
     // Name of the component
     MuiButton: {
       styleOverrides: {
