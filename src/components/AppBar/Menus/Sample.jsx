@@ -34,7 +34,11 @@ function Sample() {
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
           endIcon={<ExpandMoreIcon />}
-          sx={{ fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, height: '32px' }}
+          sx={{
+            fontWeight: (theme) => theme.trelloCustom.buttonFontWeight,
+            height: '32px',
+            color: (theme) => theme.palette.mode === 'dark' ? '#9FADBC' : '#FFFFFF'
+          }}
         >
           Sample
         </Button>

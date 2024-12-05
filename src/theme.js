@@ -1,5 +1,5 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
-import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
+// import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
 // Create a theme instance.
 // Theme dong nhat moi layout theo mot dang nhat quan
 const theme = extendTheme({
@@ -7,22 +7,6 @@ const theme = extendTheme({
     appBarHeight: '48px',
     boardBarHeight: '56px',
     buttonFontWeight: '600'
-  },
-  colorSchemes: {
-    light: {
-      palette: {
-        primary: teal,
-        secondary: deepOrange
-      },
-      spacing: (factor) => `${0.25 * factor}rem` //dieu chinh gap mac dinh thanh 0.25 rem
-    },
-    dark: {
-      palette: {
-        primary: cyan,
-        secondary: orange
-      },
-      spacing: (factor) => `${0.25 * factor}rem` //dieu chinh gap mac dinh thanh 0.25
-    }
   },
   components: {
     MuiCssBaseline: {
@@ -33,11 +17,11 @@ const theme = extendTheme({
             height: '8px'
           },
           '*::-webkit-scrollbar-thumb': {
-            backgroundColor: '#636e72',
+            backgroundColor: 'rgba(19, 22, 24, 0.9)',
             borderRadius: '8px'
           },
           '*::-webkit-scrollbar-thumb:hover': {
-            background: '#636e72'
+            backgroundColor: 'rgba(19, 22, 24, 0.9)'
           }
         }
       }
@@ -45,39 +29,31 @@ const theme = extendTheme({
     // Name of the component
     MuiButton: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
-          textTransform: 'none'
+          textTransform: 'none',
+          borderWidth: '0.5px !important',
+          '&:hover': { borderWidth: '1.55px !important' }
         }
       }
     },
     MuiInputLabel: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          color: theme.palette.primary.main,
+        root:{
+          // color: theme.palette.primary.main,
           fontSize: '0.875rem'
-        })
+        }
       }
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          color: theme.palette.primary.main,
+        root:{
+          // color: theme.palette.primary.main,
           height: '32px',
           fontSize: '0.875rem',
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.primary.light
-          },
-          '&: hover': {
-            '.MuiOutlinedInput-notchedOutline':{
-              borderColor: theme.palette.primary.main
-            }
-          },
-          '& fieldset': { //ngan chan viec border khi ma click vao nut searc hay mode se hien thi dam hon so voi binh thuong
-            borderWidth: '1px !important'
-          }
-        })
+          '& fieldset': { borderWidth: '0.5px !important' },
+          '&:hover fieldset': { borderWidth: '1.8px !important' },
+          '&.Mui-focused fieldset': { borderWidth: '1.8px !important' }
+        }
       }
     }
   }

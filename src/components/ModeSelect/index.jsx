@@ -8,6 +8,8 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
 import Box from '@mui/material/Box'
 
+const TEXT_COLORS_MODE = (theme) => theme.palette.mode === 'dark' ? '#9FADBC' : '#FFFFFF'
+
 function ModeSelect() {
   const { mode, setMode } = useColorScheme()
 
@@ -19,13 +21,28 @@ function ModeSelect() {
 
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="label-select-dark-light-mode">Mode</InputLabel>
+      <InputLabel
+        id="label-select-dark-light-mode"
+        sx={{
+          color: (theme) => TEXT_COLORS_MODE(theme),
+          '&.Mui-focused': { color: (theme) => TEXT_COLORS_MODE(theme) }
+        }}
+      >
+        Mode
+      </InputLabel>
       <Select
         labelId="label-select-dark-light-mode"
         id="select-dark-light-mode"
         value={mode}
         label="Mode"
         onChange={handleChange}
+        sx={{
+          color: (theme) => TEXT_COLORS_MODE(theme),
+          '.MuiOutlinedInput-notchedOutline': { borderColor: (theme) => TEXT_COLORS_MODE(theme) },
+          '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: (theme) => TEXT_COLORS_MODE(theme) },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: (theme) => TEXT_COLORS_MODE(theme) },
+          '.MuiSvgIcon-root': { color: (theme) => TEXT_COLORS_MODE(theme) }
+        }}
       >
         <MenuItem value="light">
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
