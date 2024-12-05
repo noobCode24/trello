@@ -15,20 +15,22 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 
 const MENU_STYLES = {
-  color: 'primary.main',
-  bgcolor: 'white',
+  color: (theme) => TEXT_COLORS_MODE(theme),
+  bgcolor: 'transparent',
   border: 'none',
   height: '32px',
   fontWeight: (theme) => theme.trelloCustom.buttonFontWeight,
   paddingX: '5px',
   borderRadius: '4px',
   '& .MuiSvgIcon-root': {
-    color: 'primary.main'
+    color: (theme) => TEXT_COLORS_MODE(theme)
   },
   '&: hover': {
     backgroundColor: 'primary.50'
   }
 }
+
+const TEXT_COLORS_MODE = (theme) => theme.palette.mode === 'dark' ? '#FFFFFF' : '#FFFFFF'
 
 function BoardBar() {
   return (
@@ -41,16 +43,17 @@ function BoardBar() {
       justifyContent: 'space-between',
       gap: 2,
       overflowX: 'auto',
-      borderTop: '1px solid #00bfa5'
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(19, 22, 24, 0.9)' : 'rgba(19, 22, 24, 0.9)'),
+      borderBottom: '0.5px solid #505051'
     }}>
       {/* Left */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, height: '32px' }}>
         <Chip
           sx={{
-            color: 'primary.main',
+            color: (theme) => TEXT_COLORS_MODE(theme),
             fontSize: '1.3rem',
             fontWeight: (theme) => theme.trelloCustom.buttonFontWeight,
-            bgcolor: 'white',
+            bgcolor: 'transparent',
             border: 'none',
             height: '32px',
             borderRadius: '4px',
@@ -62,7 +65,19 @@ function BoardBar() {
           clickable/>
 
         <Tooltip title="Star or unstar this table. Starred tables will appear at the top of the Tables list." sx={{ backgroundColor: '#9FADBC', cursor: 'default' }}>
-          <GradeIcon fontSize='small' sx={{ color: '#E2B203', cursor: 'pointer', width: '32px' }}/>
+          <Chip
+            sx={{
+              bgcolor: 'transparent',
+              border: 'none',
+              height: '32px',
+              borderRadius: '4px',
+              '&: hover': {
+                backgroundColor: 'primary.50'
+              }
+            }}
+            label = { <GradeIcon fontSize='small' sx={{ color: '#E2B203', display: 'flex', alignItems: 'center' }}/> }
+            clickable
+          />
         </Tooltip>
 
         <Tooltip title="Viewablity">
@@ -75,18 +90,18 @@ function BoardBar() {
         <Tooltip title="Board">
           <Chip
             sx={{
-              color: 'primary.main',
-              backgroundColor: 'primary.50',
+              color: '#131618',
+              backgroundColor: '#E2E2E2',
               border: 'none',
               height: '32px',
               fontWeight: (theme) => theme.trelloCustom.buttonFontWeight,
               paddingX: '5px',
               borderRadius: '4px',
               '& .MuiSvgIcon-root': {
-                color: 'primary.main'
+                color: '#131618'
               },
               '&: hover': {
-                backgroundColor: 'primary.100'
+                backgroundColor: '#FFFFFF'
               }
             }}
             icon={<DashboardIcon />}
@@ -94,21 +109,32 @@ function BoardBar() {
             clickable/>
         </Tooltip>
         <Tooltip title='Customize view'>
-          <KeyboardArrowDownIcon
-            fontSize='medium'
+          <Chip
             sx={{
-              color: 'primary.main',
+              bgcolor: 'transparent',
+              border: 'none',
               height: '32px',
-              width: '32px',
-              cursor: 'pointer',
               borderRadius: '4px',
-              '&:hover': {
-                backgroundColor: 'primary.50'
-              },
-              '&: active': {
+              '&: hover': {
                 backgroundColor: 'primary.50'
               }
-            }}/>
+            }}
+            label= {<KeyboardArrowDownIcon
+              fontSize='medium'
+              sx={{
+                color: (theme) => TEXT_COLORS_MODE(theme),
+                borderRadius: '4px',
+                display: 'flex',
+                alignItems: 'center',
+                '&:hover': {
+                  backgroundColor: 'primary.50'
+                },
+                '&: active': {
+                  backgroundColor: 'primary.50'
+                }
+              }}/>}
+            clickable
+          />
         </Tooltip>
       </Box>
 
@@ -136,15 +162,24 @@ function BoardBar() {
             clickable/>
         </Tooltip>
 
+        <Box sx={{
+          bgcolor: (theme) => theme.palette.mode === 'dark' ? '#505051' : '#FFFFFF',
+          width: '1.24px',
+          height: '58%',
+          mr: '6px',
+          ml: '-3px'
+        }}/>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, height: '32px' }}>
           <AvatarGroup
             max={4}
             total={7}
             sx={{
+              gap: '2px',
               '& .MuiAvatar-root': {
                 width: 32,
                 height: 32,
-                fontSize: 16
+                fontSize: 16,
+                border: 'none'
               }
             }}>
             <Tooltip title="HoangVanVu">
@@ -164,12 +199,22 @@ function BoardBar() {
             </Tooltip>
           </AvatarGroup>
           <Tooltip title="Share Board">
-            <Button variant="outlined" startIcon={<PersonAddIcon />}>Share</Button>
+            <Button
+              variant="outlined"
+              startIcon={<PersonAddIcon />}
+              sx={{
+                color: (theme) => TEXT_COLORS_MODE(theme),
+                borderColor: (theme) => TEXT_COLORS_MODE(theme),
+                '&:hover': { borderColor: (theme) => TEXT_COLORS_MODE(theme) }
+              }}
+            >
+              Share
+            </Button>
           </Tooltip>
         </Box>
         <MoreHorizIcon
           sx={{
-            color: 'primary.main',
+            color: (theme) => TEXT_COLORS_MODE(theme),
             height: '32px',
             width: '32px',
             cursor: 'pointer',
