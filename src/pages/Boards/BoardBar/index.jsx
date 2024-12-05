@@ -26,7 +26,7 @@ const MENU_STYLES = {
     color: (theme) => TEXT_COLORS_MODE(theme)
   },
   '&: hover': {
-    backgroundColor: 'primary.50'
+    backgroundColor: 'rgba(255, 255, 255, 0.20)'
   }
 }
 
@@ -43,8 +43,7 @@ function BoardBar() {
       justifyContent: 'space-between',
       gap: 2,
       overflowX: 'auto',
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(19, 22, 24, 0.9)' : 'rgba(19, 22, 24, 0.9)'),
-      borderBottom: '0.5px solid #505051'
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0000003d' : '#0000003d')
     }}>
       {/* Left */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, height: '32px' }}>
@@ -58,13 +57,13 @@ function BoardBar() {
             height: '32px',
             borderRadius: '4px',
             '&: hover': {
-              backgroundColor: 'primary.50'
+              backgroundColor: 'rgba(255, 255, 255, 0.20)'
             }
           }}
           label="Name product"
           clickable/>
 
-        <Tooltip title="Star or unstar this table. Starred tables will appear at the top of the Tables list." sx={{ backgroundColor: '#9FADBC', cursor: 'default' }}>
+        <Tooltip title="Star or unstar this table. Starred tables will appear at the top of the Tables list." sx={{ cursor: 'default' }}>
           <Chip
             sx={{
               bgcolor: 'transparent',
@@ -72,10 +71,20 @@ function BoardBar() {
               height: '32px',
               borderRadius: '4px',
               '&: hover': {
-                backgroundColor: 'primary.50'
+                backgroundColor: 'rgba(255, 255, 255, 0.20)'
               }
             }}
-            label = { <GradeIcon fontSize='small' sx={{ color: '#E2B203', display: 'flex', alignItems: 'center' }}/> }
+            label = {
+              <GradeIcon
+                fontSize='small'
+                sx={{
+                  bgcolor: 'none',
+                  color: '#E2B203',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              />
+            }
             clickable
           />
         </Tooltip>
@@ -90,7 +99,7 @@ function BoardBar() {
         <Tooltip title="Board">
           <Chip
             sx={{
-              color: '#131618',
+              color: '#2E2F30',
               backgroundColor: '#E2E2E2',
               border: 'none',
               height: '32px',
@@ -98,7 +107,7 @@ function BoardBar() {
               paddingX: '5px',
               borderRadius: '4px',
               '& .MuiSvgIcon-root': {
-                color: '#131618'
+                color: '#2E2F30'
               },
               '&: hover': {
                 backgroundColor: '#FFFFFF'
@@ -116,7 +125,7 @@ function BoardBar() {
               height: '32px',
               borderRadius: '4px',
               '&: hover': {
-                backgroundColor: 'primary.50'
+                backgroundColor: 'rgba(255, 255, 255, 0.20)'
               }
             }}
             label= {<KeyboardArrowDownIcon
@@ -127,10 +136,10 @@ function BoardBar() {
                 display: 'flex',
                 alignItems: 'center',
                 '&:hover': {
-                  backgroundColor: 'primary.50'
+                  backgroundColor: 'rgba(255, 255, 255, 0.20)'
                 },
                 '&: active': {
-                  backgroundColor: 'primary.50'
+                  backgroundColor: 'rgba(255, 255, 255, 0.20)'
                 }
               }}/>}
             clickable
@@ -163,7 +172,7 @@ function BoardBar() {
         </Tooltip>
 
         <Box sx={{
-          bgcolor: (theme) => theme.palette.mode === 'dark' ? '#505051' : '#FFFFFF',
+          bgcolor: (theme) => theme.palette.mode === 'dark' ? '#505051' : '#AAAAAA',
           width: '1.24px',
           height: '58%',
           mr: '6px',
@@ -221,10 +230,10 @@ function BoardBar() {
             ml: '5px',
             borderRadius: '4px',
             '&:hover': {
-              backgroundColor: 'primary.50'
+              backgroundColor: 'rgba(255, 255, 255, 0.20)'
             },
             '&: active': {
-              backgroundColor: 'primary.50'
+              backgroundColor: 'rgba(255, 255, 255, 0.20)'
             }
           }}/>
       </Box>

@@ -33,7 +33,10 @@ function Recent() {
           sx={{
             fontWeight: (theme) => theme.trelloCustom.buttonFontWeight,
             height: '32px',
-            color: (theme) => theme.palette.mode === 'dark' ? '#9FADBC' : '#FFFFFF'
+            color: (theme) => theme.palette.mode === 'dark' ? '#9FADBC' : '#FFFFFF',
+            '&: hover': {
+              backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
+            }
           }}
         >
           Recently

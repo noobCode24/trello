@@ -49,13 +49,13 @@ function AppBar() {
             height: '32px',
             borderRadius: '4px',
             '&: hover': {
-              backgroundColor: 'primary.50'
+              backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
             }
           }}
           label = {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
               <SvgIcon component={trelloIcon} fontSize='small' inheritViewBox sx={{ color: (theme) => TEXT_COLORS_MODE(theme) }}/>
-              <Typography component='span' sx={{ fontSize: '1.2rem', fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, color: (theme) => TEXT_COLORS_MODE(theme) }}>Trello</Typography>
+              <Typography component='span' sx={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, color: (theme) => TEXT_COLORS_MODE(theme) }}>Trello</Typography>
             </Box>
           }
           clickable
