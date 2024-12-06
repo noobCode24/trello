@@ -68,10 +68,14 @@ function BoardBar() {
             sx={{
               bgcolor: 'transparent',
               border: 'none',
+              width: '32px',
               height: '32px',
               borderRadius: '4px',
               '&: hover': {
                 backgroundColor: 'rgba(255, 255, 255, 0.20)'
+              },
+              '& .MuiChip-label': {
+                paddingX: 0
               }
             }}
             label = {
@@ -122,25 +126,21 @@ function BoardBar() {
             sx={{
               bgcolor: 'transparent',
               border: 'none',
+              width: '32px',
               height: '32px',
               borderRadius: '4px',
               '&: hover': {
                 backgroundColor: 'rgba(255, 255, 255, 0.20)'
+              },
+              '& .MuiChip-label': {
+                paddingX: 0
               }
             }}
             label= {<KeyboardArrowDownIcon
-              fontSize='medium'
               sx={{
                 color: (theme) => TEXT_COLORS_MODE(theme),
-                borderRadius: '4px',
                 display: 'flex',
-                alignItems: 'center',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.20)'
-                },
-                '&: active': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.20)'
-                }
+                alignItems: 'center'
               }}/>}
             clickable
           />
@@ -221,21 +221,31 @@ function BoardBar() {
             </Button>
           </Tooltip>
         </Box>
-        <MoreHorizIcon
+        <Chip
           sx={{
-            color: (theme) => TEXT_COLORS_MODE(theme),
-            height: '32px',
+            bgcolor: 'transparent',
+            border: 'none',
             width: '32px',
-            cursor: 'pointer',
-            ml: '5px',
+            height: '32px',
             borderRadius: '4px',
-            '&:hover': {
+            '&: hover': {
               backgroundColor: 'rgba(255, 255, 255, 0.20)'
             },
-            '&: active': {
-              backgroundColor: 'rgba(255, 255, 255, 0.20)'
+            '& .MuiChip-label': {
+              paddingX: 0
             }
-          }}/>
+          }}
+          label = {
+            <MoreHorizIcon
+              sx={{
+                color: (theme) => TEXT_COLORS_MODE(theme),
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            />
+          }
+          clickable
+        />
       </Box>
     </Box>
   )

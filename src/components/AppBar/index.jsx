@@ -41,7 +41,33 @@ function AppBar() {
     }}>
       {/* left */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, height: '32px' }}>
-        <AppsIcon sx={{ color: (theme) => TEXT_COLORS_MODE(theme), cursor: 'pointer' }}/>
+        <Chip
+          sx={{
+            bgcolor: 'transparent',
+            border: 'none',
+            width: '32px',
+            height: '32px',
+            borderRadius: '4px',
+            '&: hover': {
+              backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
+            },
+            '& .MuiChip-label': {
+              paddingX: 0
+            }
+          }}
+          label = {
+            <AppsIcon
+              sx={{
+                width: '20px', // Đặt kích thước chiều rộng
+                height: '20px',
+                color: (theme) => TEXT_COLORS_MODE(theme),
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            />
+          }
+          clickable
+        />
         <Chip
           sx={{
             bgcolor: 'transparent',
@@ -50,12 +76,24 @@ function AppBar() {
             borderRadius: '4px',
             '&: hover': {
               backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
+            },
+            '& .MuiChip-label': {
+              paddingX: 1
             }
           }}
           label = {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-              <SvgIcon component={trelloIcon} fontSize='small' inheritViewBox sx={{ color: (theme) => TEXT_COLORS_MODE(theme) }}/>
-              <Typography component='span' sx={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, color: (theme) => TEXT_COLORS_MODE(theme) }}>Trello</Typography>
+              <SvgIcon
+                component={trelloIcon}
+                fontSize='small'
+                inheritViewBox
+                sx={{
+                  color: (theme) => TEXT_COLORS_MODE(theme),
+                  width: '18px', // Đặt kích thước chiều rộng
+                  height: '18px'
+                }}
+              />
+              <Typography component='span' sx={{ fontSize: '1.2rem', fontWeight: (theme) => theme.trelloCustom.buttonFontWeight, color: (theme) => TEXT_COLORS_MODE(theme) }}>Trello</Typography>
             </Box>
           }
           clickable
@@ -88,7 +126,7 @@ function AppBar() {
       </Box>
 
       {/* Right */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, height: '32px' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, height: '32px' }}>
         <TextField
           id="outlined-search"
           label="Search..."
@@ -128,14 +166,64 @@ function AppBar() {
 
         {/* Notifications */}
         <Tooltip title="Notifications">
-          <Badge color="warning" variant="dot" sx={{ cursor: 'pointer' }}>
-            <SvgIcon component={bellIcon} inheritViewBox sx={{ color: (theme) => TEXT_COLORS_MODE(theme) }} />
+          <Badge color="warning" variant="dot">
+            <Chip
+              sx={{
+                bgcolor: 'transparent',
+                border: 'none',
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                '&: hover': {
+                  backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
+                },
+                '& .MuiChip-label': {
+                  paddingX: 0
+                }
+              }}
+              label = {
+                <SvgIcon
+                  component={bellIcon}
+                  inheritViewBox
+                  sx={{
+                    color: (theme) => TEXT_COLORS_MODE(theme),
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                />
+              }
+              clickable
+            />
           </Badge>
         </Tooltip>
 
         {/* Help */}
         <Tooltip title="Help">
-          <HelpOutlineIcon sx={{ color: (theme) => TEXT_COLORS_MODE(theme), cursor: 'pointer' }}/>
+          <Chip
+            sx={{
+              bgcolor: 'transparent',
+              border: 'none',
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              '&: hover': {
+                backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
+              },
+              '& .MuiChip-label': {
+                paddingX: 0
+              }
+            }}
+            label = {
+              <HelpOutlineIcon
+                sx={{
+                  color: (theme) => TEXT_COLORS_MODE(theme),
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              />
+            }
+            clickable
+          />
         </Tooltip>
 
         <Profiles />
