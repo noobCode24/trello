@@ -28,13 +28,13 @@ function Profiles() {
         <IconButton
           onClick={handleClick}
           size="small"
-          sx={{ padding: 0 }}
+          sx={{ padding: 0, width: '32px', height: '32px' }}
           aria-controls={open ? 'basic-menu-profiles' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
         >
           <Avatar
-            sx={{ width: 32, height: 32 }}
+            sx={{ width: 24, height: 24 }}
             alt='HoangVanVu'
             src="https://lh3.googleusercontent.com/a/ACg8ocL8j_TiXwReyQNlRgnsT2bw5IDlgDuomEWx8REzAzxpGWnOnDw4=s96-c-rg-br100"
           />
