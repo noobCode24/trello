@@ -31,7 +31,7 @@ function AppBar() {
       width: '100%',
       height: (theme) => theme.trelloCustom.appBarHeight,
       display: 'flex',
-      paddingX: 2,
+      paddingX: 0.7,
       alignItems: 'center', //can giua theo chieu doc
       justifyContent: 'space-between',
       gap: 2,
@@ -137,7 +137,7 @@ function AppBar() {
           InputProps={{ // giong voi sx
             startAdornment: ( // icon search o dau
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: (theme) => TEXT_COLORS_MODE(theme) }}/>
+                <SearchIcon sx={{ color: (theme) => TEXT_COLORS_MODE(theme), width: '21px', height: '21px', ml: '-2px' }}/>
               </InputAdornment>
             ),
             endAdornment: (
@@ -166,7 +166,14 @@ function AppBar() {
 
         {/* Notifications */}
         <Tooltip title="Notifications">
-          <Badge color="warning" variant="dot">
+          <Box
+            sx={{
+              position: 'relative',
+              width: '32px',
+              height: '32px'
+            }}
+          >
+            {/* Chip */}
             <Chip
               sx={{
                 bgcolor: 'transparent',
@@ -174,27 +181,47 @@ function AppBar() {
                 width: '32px',
                 height: '32px',
                 borderRadius: '50%',
-                '&: hover': {
-                  backgroundColor: (theme) => theme.palette.mode === 'dark' ? '#A6C5E229': 'rgba(255, 255, 255, 0.20)'
+                '&:hover': {
+                  backgroundColor: (theme) =>
+                    theme.palette.mode === 'dark' ? '#A6C5E229' : 'rgba(255, 255, 255, 0.20)'
                 },
                 '& .MuiChip-label': {
-                  paddingX: 0
+                  paddingX: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }
               }}
-              label = {
+              label={
                 <SvgIcon
                   component={bellIcon}
                   inheritViewBox
                   sx={{
                     color: (theme) => TEXT_COLORS_MODE(theme),
-                    display: 'flex',
-                    alignItems: 'center'
+                    width: '20px',
+                    height: '20px'
                   }}
                 />
               }
               clickable
             />
-          </Badge>
+            {/* Badge */}
+            <Badge
+              color="warning"
+              variant="dot"
+              sx={{
+                position: 'absolute',
+                top: '4px', // Vị trí của badge
+                right: '3px', // Vị trí của badge
+                '& .MuiBadge-dot': {
+                  width: '8px',
+                  height: '8px',
+                  minWidth: 'unset',
+                  padding: 0 // Viền trắng cho dot
+                }
+              }}
+            />
+          </Box>
         </Tooltip>
 
         {/* Help */}
@@ -217,6 +244,8 @@ function AppBar() {
               <HelpOutlineIcon
                 sx={{
                   color: (theme) => TEXT_COLORS_MODE(theme),
+                  width: '20px',
+                  height: '20px',
                   display: 'flex',
                   alignItems: 'center'
                 }}

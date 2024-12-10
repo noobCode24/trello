@@ -2,10 +2,16 @@ import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
 // import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
 // Create a theme instance.
 // Theme dong nhat moi layout theo mot dang nhat quan
+
+const APP_BAR_HEIGHT = '48px'
+const BOARD_BAR_HEIGHT = '56px'
+const BOARD_CONTENT_HEIGHT = `calc(100vh - ${APP_BAR_HEIGHT} - ${BOARD_BAR_HEIGHT})`
+// const BUTTON_FONT_WEIGHT = '600'
 const theme = extendTheme({
   trelloCustom: {
-    appBarHeight: '48px',
-    boardBarHeight: '56px',
+    appBarHeight: APP_BAR_HEIGHT,
+    boardBarHeight: BOARD_BAR_HEIGHT,
+    boardContentHeight: BOARD_CONTENT_HEIGHT,
     buttonFontWeight: '600'
   },
   components: {
@@ -19,9 +25,6 @@ const theme = extendTheme({
           '*::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgba(19, 22, 24, 0.9)',
             borderRadius: '8px'
-          },
-          '*::-webkit-scrollbar-thumb:hover': {
-            backgroundColor: 'rgba(19, 22, 24, 0.9)'
           }
         }
       }
@@ -58,6 +61,5 @@ const theme = extendTheme({
     }
   }
 })
-console.log('🚀 ~ theme:', theme)
 
 export default theme

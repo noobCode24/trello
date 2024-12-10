@@ -3,7 +3,6 @@ import Chip from '@mui/material/Chip'
 import GradeIcon from '@mui/icons-material/Grade'
 import VpnLockIcon from '@mui/icons-material/VpnLock'
 import Tooltip from '@mui/material/Tooltip'
-import DashboardIcon from '@mui/icons-material/Dashboard'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import AddToDriveIcon from '@mui/icons-material/AddToDrive'
 import BoltIcon from '@mui/icons-material/Bolt'
@@ -13,7 +12,7 @@ import AvatarGroup from '@mui/material/AvatarGroup'
 import Button from '@mui/material/Button'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-
+import { ReactComponent as PresentationIcon } from '~/assets/presentation.svg'
 const MENU_STYLES = {
   color: (theme) => TEXT_COLORS_MODE(theme),
   bgcolor: 'transparent',
@@ -39,7 +38,7 @@ function BoardBar() {
       height: (theme) => theme.trelloCustom.boardBarHeight,
       display: 'flex',
       alignItems: 'center',
-      paddingX: 2,
+      paddingX: 0.7,
       justifyContent: 'space-between',
       gap: 2,
       overflowX: 'auto',
@@ -82,6 +81,8 @@ function BoardBar() {
               <GradeIcon
                 fontSize='small'
                 sx={{
+                  width: '17px',
+                  height: '17px',
                   bgcolor: 'none',
                   color: '#E2B203',
                   display: 'flex',
@@ -96,7 +97,7 @@ function BoardBar() {
         <Tooltip title="Viewablity">
           <Chip
             sx={MENU_STYLES}
-            icon={<VpnLockIcon />}
+            icon={<VpnLockIcon sx={{ width: '20px', height: '20px', mb: '3px' }}/>}
             label="Public"
             clickable/>
         </Tooltip>
@@ -110,14 +111,15 @@ function BoardBar() {
               fontWeight: (theme) => theme.trelloCustom.buttonFontWeight,
               paddingX: '5px',
               borderRadius: '4px',
-              '& .MuiSvgIcon-root': {
-                color: '#2E2F30'
+              '& .MuiChip-icon': {
+                color: '#2E2F30',
+                mb: '2px'
               },
               '&: hover': {
                 backgroundColor: '#FFFFFF'
               }
             }}
-            icon={<DashboardIcon />}
+            icon={<PresentationIcon />}
             label="Board"
             clickable/>
         </Tooltip>
@@ -174,7 +176,7 @@ function BoardBar() {
         <Box sx={{
           bgcolor: (theme) => theme.palette.mode === 'dark' ? '#505051' : '#AAAAAA',
           width: '1.24px',
-          height: '58%',
+          height: '50%',
           mr: '6px',
           ml: '-3px'
         }}/>
@@ -185,10 +187,15 @@ function BoardBar() {
             sx={{
               gap: '2px',
               '& .MuiAvatar-root': {
-                width: 32,
-                height: 32,
-                fontSize: 16,
-                border: 'none'
+                width: 28,
+                height: 28,
+                fontSize: 14,
+                border: 'none',
+                color: '#FFFFFF',
+                cursor: 'pointer',
+                '&:first-of-type': {
+                  bgcolor: '#9DA3A9'
+                }
               }
             }}>
             <Tooltip title="HoangVanVu">
@@ -213,6 +220,7 @@ function BoardBar() {
               startIcon={<PersonAddIcon />}
               sx={{
                 color: (theme) => TEXT_COLORS_MODE(theme),
+                height: '32px',
                 borderColor: (theme) => TEXT_COLORS_MODE(theme),
                 '&:hover': { borderColor: (theme) => TEXT_COLORS_MODE(theme) }
               }}
