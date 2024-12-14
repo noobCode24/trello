@@ -4,6 +4,7 @@ import BoardBar from './BoardBar/BoardBar'
 import BoardContent from './BoardContent/BoardContent'
 import Box from '@mui/material/Box'
 import backgroundImage from '~/assets/car.jpg'
+import { mockData } from '~/apis/mock-data'
 function Board() {
   return (
     //Dung container thay vi react fragments <></>
@@ -32,8 +33,8 @@ function Board() {
         }}
       >
         <AppBar />
-        <BoardBar />
-        <BoardContent />
+        <BoardBar board={mockData?.board} /> {/*(optional Chaining) mockData ? mockData.board : undefined */}
+        <BoardContent board={mockData?.board}/>
       </Box>
     </Container>
   )
