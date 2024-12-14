@@ -13,6 +13,8 @@ import Button from '@mui/material/Button'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { ReactComponent as PresentationIcon } from '~/assets/presentation.svg'
+import { capitalizeFirstLetter } from '~/utils/formatters'
+
 const MENU_STYLES = {
   color: (theme) => TEXT_COLORS_MODE(theme),
   bgcolor: 'transparent',
@@ -31,7 +33,9 @@ const MENU_STYLES = {
 
 const TEXT_COLORS_MODE = (theme) => theme.palette.mode === 'dark' ? '#FFFFFF' : '#FFFFFF'
 
-function BoardBar() {
+function BoardBar({ board }) {
+  // const { board } = props
+  // const board = props.board
   return (
     <Box sx ={{
       width: '100%',
@@ -59,7 +63,7 @@ function BoardBar() {
               backgroundColor: 'rgba(255, 255, 255, 0.20)'
             }
           }}
-          label="Name product"
+          label= {board?.title}
           clickable/>
 
         <Tooltip title="Star or unstar this table. Starred tables will appear at the top of the Tables list." sx={{ cursor: 'default' }}>
@@ -98,7 +102,7 @@ function BoardBar() {
           <Chip
             sx={MENU_STYLES}
             icon={<VpnLockIcon sx={{ width: '20px', height: '20px', mb: '3px' }}/>}
-            label="Public"
+            label={capitalizeFirstLetter(board?.type)}
             clickable/>
         </Tooltip>
         <Tooltip title="Board">

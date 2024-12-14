@@ -18,13 +18,14 @@ import AddIcon from '@mui/icons-material/Add'
 import Chip from '@mui/material/Chip'
 import { ReactComponent as OptimizeIcon } from '~/assets/optimize.svg'
 import { ReactComponent as TemplateIcon } from '~/assets/template.svg'
-// import { ReactComponent as EditCardIcon } from '~/assets/editCard.svg'
+import { mapOrder } from '~/utils/sorts'
 import { Button } from '@mui/material'
 import ListCards from './ListCards/ListCards'
 
 const COLUMN_COLORS_MODE = (theme) => theme.palette.mode === 'dark' ? '#101204' : '#F1F2F4'
 
-function Column() {
+function Column({ column }) {
+  const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
   const [isMenuOpen, setMenuOpen] = useState(false)
 
   const handleToggleMenu = () => {
@@ -70,7 +71,7 @@ function Column() {
             lineHeight: '20px'
           }}
         >
-          Column title
+          {column?.title}
         </Typography>
         <Box
           sx={{
@@ -419,7 +420,7 @@ function Column() {
       />
 
       {/* List Card */}
-      <ListCards />
+      <ListCards cards={orderedCards}/>
 
       {/* Footer */}
       <Box sx={{
