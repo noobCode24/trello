@@ -21,38 +21,55 @@ import { ReactComponent as TemplateIcon } from '~/assets/template.svg'
 import { mapOrder } from '~/utils/sorts'
 import { Button } from '@mui/material'
 import ListCards from './ListCards/ListCards'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 const COLUMN_COLORS_MODE = (theme) => theme.palette.mode === 'dark' ? '#101204' : '#F1F2F4'
 
 function Column({ column }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: column._id,
+    data: { ...column }
+  })
+  const dndKitColumnStyles = {
+    // mobile
+    // touchAction: 'none', // danh co sensor default dang pointerSensor
+    // Neu su dung CSS. Transform nhu docs se loi kieu thay doi ti le keo
+    // https://github.com/clauderic/dnd-kit/issues/117
+    transform: CSS.Translate.toString(transform),
+    transition
+  }
+
   const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
   const [isMenuOpen, setMenuOpen] = useState(false)
-
   const handleToggleMenu = () => {
     setMenuOpen((prev) => !prev)
   }
 
   const [anchorElOptimize, setAnchorElOptimize] = useState(null)
   const [anchorElManipulate, setAnchorElManipulate] = useState(null)
-
   const openOptimize = Boolean(anchorElOptimize)
   const openManipulate = Boolean(anchorElManipulate)
 
   const handleClickOptimize = (event) => setAnchorElOptimize(event.currentTarget)
   const handleCloseOptimize = () => setAnchorElOptimize(null)
-
   const handleClickManipulate = (event) => setAnchorElManipulate(event.currentTarget)
   const handleCloseManipulate = () => setAnchorElManipulate(null)
 
   return (
-    <Box sx={{
-      minWidth: '272px',
-      maxWidth: '272px',
-      bgcolor: (theme) => COLUMN_COLORS_MODE(theme),
-      borderRadius: '12px',
-      height: 'fit-content',
-      maxHeight: (theme) => `calc(${theme.trelloCustom.boardContentHeight} - ${theme.spacing(4)})`
-    }}>
+    <Box
+      ref={ setNodeRef }
+      style = { dndKitColumnStyles }
+      {...attributes}
+      {...listeners}
+      sx={{
+        minWidth: '272px',
+        maxWidth: '272px',
+        bgcolor: (theme) => COLUMN_COLORS_MODE(theme),
+        borderRadius: '12px',
+        height: 'fit-content',
+        maxHeight: (theme) => `calc(${theme.trelloCustom.boardContentHeight} - ${theme.spacing(4)})`
+      }}>
       {/* Header */}
       <Box sx={{
         height: (theme) => theme.trelloCustom.columnHeaderHeight,
